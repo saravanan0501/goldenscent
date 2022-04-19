@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <Goldenscent_Partnerorder>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Goldenscent_Partnerorder>
+    </modules>
+</config>

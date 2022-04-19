@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Goldenscent_Partnerorder>
+            <version>1.0.0</version>
+        </Goldenscent_Partnerorder>
+    </modules>
+    <global>
+        <blocks>
+            <sales>
+                <rewrite>
+                    <order_history>Goldenscent_Partnerorder_Block_Sales_Order_History</order_history>
+                    <order_recent>Goldenscent_Partnerorder_Block_Sales_Order_Recent</order_recent>
+                </rewrite>
+            </sales>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_grid>Goldenscent_Partnerorder_Block_Adminhtml_Sales_Order_Grid</sales_order_grid>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <goldenscent_partnerorder>
+                        <class>goldenscent_partnerorder/observer</class>
+                        <method>capturePartner</method>
+                        <type>singleton</type>
+                    </goldenscent_partnerorder >
+                </observers>
+            </controller_front_init_before>
+        </events>
+
+        <models>
+            <splitorder>
+                <class>Goldenscent_Partnerorder_Model</class>
+                <resourceModel>splitorder_mysql4</resourceModel>
+            </splitorder>
+            <checkout>
+                <rewrite>
+                    <type_onepage>Goldenscent_Partnerorder_Model_Checkout_Type_Onepage</type_onepage>
+                </rewrite>
+            </checkout>
+        </models>
+        <resources>              
+            <splitorder_setup>
+                <setup>
+                    <module>Goldenscent_Partnerorder</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </splitorder_setup>
+            <splitorder_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </splitorder_write>
+            <splitorder_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </splitorder_read>
+        </resources>
+    </global>
+</config>
