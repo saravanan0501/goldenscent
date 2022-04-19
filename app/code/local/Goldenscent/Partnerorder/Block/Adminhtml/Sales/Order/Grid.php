@@ -26,7 +26,7 @@ class Goldenscent_Partnerorder_Block_Adminhtml_Sales_Order_Grid extends Mage_Adm
     protected function _prepareCollection()
     {
         $collection = Mage::getResourceModel($this->_getCollectionClass());
-        $collection->getSelect()->joinLeft('sales_flat_order', 'main_table.entity_id = sales_flat_order.entity_id',array('split_order_parent_id'));
+        $collection->getSelect()->joinLeft('sales_flat_order', 'main_table.entity_id = sales_flat_order.entity_id',array('partner_order_parent_id'));
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
